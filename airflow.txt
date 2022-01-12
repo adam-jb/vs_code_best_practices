@@ -1,0 +1,142 @@
+To install airflow for python3.8:
+pip install "apache-airflow[celery]==2.2.3" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.2.3/constraints-3.8.txt"
+
+source: https://airflow.apache.org/docs/apache-airflow/stable/installation/installing-from-pypi.html
+
+
+
+
+to run airflow locally:
+airflow standalone
+
+Can use this to run DAG, inc getting stats on runtime of each section, and get nice plot of DAG 
+
+source: https://airflow.apache.org/docs/apache-airflow/stable/start/local.html
+
+
+
+
+
+to run DAG once from CLI:
+airflow dags test [DAG name] [any input params needed] 
+
+
+
+
+
+Complementing airflow standalone, is the scheduler:it monitors all tasks and DAGs, then triggers the task instances once their dependencies are complete
+airflow scheduler
+
+
+The Airflow scheduler is designed to run as a persistent service in an Airflow production environment. To kick it off, all you need to do is execute the airflow scheduler command. It uses the configuration specified in airflow.cfg.
+
+
+
+
+airflow.cfg is config file for all airflow params
+
+
+
+
+
+Think of Airflow script as a config file of DAG structure
+
+'Operator' = represents single task. Task is ideally idempotent
+
+Different tasks run on different workers at different points in time, which means that this script cannot be used to cross communicate between tasks
+
+
+
+
+
+
+The precedence rules for a task are as follows:
+
+	Explicitly passed arguments, then:
+
+	Values that exist in the default_args dictionary, then:
+
+	The operator’s default value, if one exists
+
+
+
+
+
+
+## best to use PythonOperator to call python scripts as part of the DAG
+from airflow.operators.python_operator import PythonOperator
+
+source: https://stackoverflow.com/questions/41730297/python-script-scheduling-in-airflow
+
+
+
+## Though may also be fine to use BashOperator, using absolute location of the py script in this case, eg:
+BashOperator(
+    task_id='testairflow',
+    bash_command='python /home/airflow/airflow/dags/scripts/file1.py', 
+    dag=dag)
+
+source (same as above): https://stackoverflow.com/questions/41730297/python-script-scheduling-in-airflow
+
+
+
+
+
+
+
+
+### Ways to set DAG order (at end of dag py script):
+t2.set_upstream(t1)
+t1.set_downstream([t2, t3])
+t1 >> t2 >> t3
+t1 >> [t2, t3]
+
+
+
+Get info on things like file pathways:
+airflow info
+
+airflow cheat-sheet
+
+List of high level commands:
+airflow -h
+
+
+List all DAGS:
+airflow dags list 
+
+
+The name of the dag isn't set by the file name, but by the DAG name, which is the first parameter of with DAG("dag name here",,,
+
+
+
+Copy file to location all other DAGs live at ()
+cp /Users/dftdatascience/Desktop/vs_code_best_practices/airflow_example.py  /Users/dftdatascience/airflow/dags/airflow_example.py
+
+
+
+
+
+
+
+
+/Users/dftdatascience/airflow 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
