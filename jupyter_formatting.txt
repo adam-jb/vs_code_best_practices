@@ -1,0 +1,14 @@
+## changes text size for all cells in notebook
+%%html
+<style type='text/css'>
+.CodeMirror{font-size: 12px;
+</style>
+
+
+
+
+# change jupyter theme
+!pip install jupyterthemes
+!jt -fs 15 
+
+

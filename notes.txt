@@ -22,4 +22,59 @@ Source of advice: https://stackoverflow.com/questions/59768704/is-there-a-shortc
 
 
 
+To choose set python interpreter in VS Code: Code -> Preferences -> Settings (then click top-right Open-Settings JSON) and add
+	 "python.defaultInterpreterPath": "/opt/anaconda3/bin/python3" (or whatever your pathway is)
+Get the pathway by opening python3 in terminal and typing: import os; sys.executable
+Source: https://www.youtube.com/watch?v=veJvQ88ULOM
+
+
+
+
+
+To break a python script into jupyter-like cells, while keeping code as a .py file: put the below in .py scripts in VS Code editor
+# %%
+
+
+
+
+## On testing
+Unit = piece of code to be tested, eg: a function or class
+
+unit tests often follow this format:
+assert(function_name(param_tested), 'expected_result')  
+
+Developers typically run unit tests even before committing code to a repository
+
+Python tests are Python classes that reside in separate files from the code being tested
+
+In same folder as script with funcs to test, make script with object and test methods. Give is a name starting with 'test'
+
+Click on glass beaker icon on LHS to see tests. Configure, setting to use 'unittest' and search for '*test' extentions
+
+Can then run all tests or one test at a time by clicking on play button on a test's line of code in the test script
+
+Source on testing: https://code.visualstudio.com/docs/python/testing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
