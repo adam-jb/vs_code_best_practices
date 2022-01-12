@@ -1,3 +1,38 @@
+
+
+
+To make DAG visible:
+>run python3 dag_file.py     # if this returns no errors you can be sure the file will at least appear in your list of DAGs
+>copy to /Users/dftdatascience/airflow/dags/
+>run airflow db init
+(won't work if there is an error in the script: check this by running dag py file in original location before doing the above)
+
+To make DAG visible online:
+>airflow standalone  # in one terminal tab
+>airflow schedular   # in another terminal tab
+
+airflow dags list
+
+To run connectivity DAG with a single param '1':
+airflow dags test connectivity 1
+ 
+
+If you get an error 'ValueError: invalid DagRun state: None', trying changing the number input to a different one
+
+
+
+
+
+
+
+
+
+
+
+Airflow can run DAGS on timing or in response to trigger events
+
+
+
 To install airflow for python3.8:
 pip install "apache-airflow[celery]==2.2.3" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.2.3/constraints-3.8.txt"
 
@@ -23,8 +58,8 @@ airflow dags test [DAG name] [any input params needed]
 
 
 
-
-Complementing airflow standalone, is the scheduler:it monitors all tasks and DAGs, then triggers the task instances once their dependencies are complete
+ 
+Complementing airflow standalone, is the scheduler: it monitors all tasks and DAGs, then triggers the task instances once their dependencies are complete
 airflow scheduler
 
 
@@ -34,6 +69,10 @@ The Airflow scheduler is designed to run as a persistent service in an Airflow p
 
 
 airflow.cfg is config file for all airflow params
+
+
+
+airflow db init  # this might add script to official list of dags
 
 
 
@@ -110,8 +149,19 @@ The name of the dag isn't set by the file name, but by the DAG name, which is th
 
 
 
-Copy file to location all other DAGs live at ()
-cp /Users/dftdatascience/Desktop/vs_code_best_practices/airflow_example.py  /Users/dftdatascience/airflow/dags/airflow_example.py
+
+
+To run ipynb in bash with 4 params (haha 134 1342 124):
+ipython test_argv.ipynb -- haha 134 1342 124
+
+
+
+
+
+
+Copy file to location all other DAGs live at :
+
+cp /Users/dftdatascience/Desktop/connectivity-code/py_scripts_for_dag/airflow_connectivity.py /Users/dftdatascience/airflow/dags/airflow_connectivity.py
 
 
 
@@ -120,7 +170,6 @@ cp /Users/dftdatascience/Desktop/vs_code_best_practices/airflow_example.py  /Use
 
 
 
-/Users/dftdatascience/airflow 
 
 
 
