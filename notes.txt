@@ -1,0 +1,25 @@
+To run python in VS code
+
+Cmd + shift + p -> Python: Start REPL
+
+
+To put REPL on RHS:
+On top right click ‘split editor right’ icon, which looks like a picture of an open book
+On bottom right there is a list of window: drag the one called ‘REPL’ into the empty space the step above created
+
+
+To set highlighted code to run on cmd + enter
+Go to Code -> preferences -> keyboard shortcuts. Then click ‘Open keyboard shortcuts (JSON’) at top right. Then paste the below and save it:
+[
+    {
+        "key": “cmd+enter,
+        "command": "workbench.action.terminal.runSelectedText"
+    }
+]
+Source of advice: https://stackoverflow.com/questions/59768704/is-there-a-shortcut-in-vscode-to-execute-current-line-or-selection-in-debug-repl
+
+
+
+
+
+
